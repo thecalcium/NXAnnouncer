@@ -27,7 +27,7 @@ public class NXAnnouncer extends JavaPlugin implements Listener {
 
     public static void setFont(FontManager font) throws Exception {
         if (NXAnnouncer.font != null) {
-            throw new Exception("Font has alrady been initilized");
+            throw new Exception("Font has already been initialized");
         }
         NXAnnouncer.font = font;
     }
@@ -54,7 +54,7 @@ public class NXAnnouncer extends JavaPlugin implements Listener {
         conf.setup();
         mm.load();
         mm.save();
-        //We create the font loading thregad
+        //We create the font loading thread
         font.runTaskLaterAsynchronously(this, 0L);
 
         if (!conf.isNoPlayers()) {

@@ -1,6 +1,11 @@
+# Compiled files
 *.class
 
-# Package Files #
+# Package files
 *.jar
 *.war
 *.ear
+
+# IDE specific files
+*.iml
+.idea

@@ -23,6 +23,7 @@ public class Config {
 
     private double interval;
     private boolean noPlayers;
+    private int minPlayers;
     private String pluginName;
     private List<Announcement> announcements;
     private FileConfiguration config;
@@ -35,6 +36,7 @@ public class Config {
         this.file = new File(main.getDataFolder(), "config.yml");
         this.interval = 5;
         this.noPlayers = true;
+        this.minPlayers = 5;
         this.pluginName = "[" + main.getName() + "] ";
     }
 
@@ -52,6 +54,7 @@ public class Config {
         announcements.addAll(getAnnouncements(config.getConfigurationSection("Announcements")));
         interval = config.getInt("Interval.Minutes", 5) * 60 + config.getInt("Interval.Seconds", 0);
         noPlayers = config.getBoolean("No Players");
+        minPlayers = config.getInt("Min Players");
         color = Announcement.colorize(config.getString("Default Message Color", "&7"));
 
         NXAnnouncer.getLOG().log(Level.INFO, "{0}Has loaded {1} message(s).", new Object[]{pluginName, announcements.size()});
@@ -70,6 +73,7 @@ public class Config {
             config.set("Interval.Minutes", 5);
             config.set("Interval.Seconds", 0);
             config.set("No Players", true);
+            config.set("Min Players", 5);
             config.set("Default Message Color", "&7");
             config.set("Announcements.AnnouncementGroup1.header", "&1-----------[BarksSimple&bAnnouncer]-----------");
             config.set("Announcements.AnnouncementGroup1.footer", "&1----------------------&b----------------------");
@@ -100,6 +104,10 @@ public class Config {
 
     public boolean isNoPlayers() {
         return noPlayers;
+    }
+
+    public int getMinPlayers() {
+        return minPlayers;
     }
 
     public double getInterval() {
