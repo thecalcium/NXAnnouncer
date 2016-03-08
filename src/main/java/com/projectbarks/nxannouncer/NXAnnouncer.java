@@ -57,10 +57,6 @@ public class NXAnnouncer extends JavaPlugin implements Listener {
         //We create the font loading thread
         font.runTaskLaterAsynchronously(this, 0L);
 
-        if (!conf.isNoPlayers()) {
-            getLOG().log(Level.INFO, "Disabling sending messages with 0 players online!");
-        }
-
         this.getServer().getPluginCommand("nxannouncer").setExecutor(commands);
     }
 

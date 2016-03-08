@@ -22,7 +22,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 public class Config {
 
     private double interval;
-    private boolean noPlayers;
     private int minPlayers;
     private String pluginName;
     private List<Announcement> announcements;
@@ -35,7 +34,6 @@ public class Config {
         this.announcements = new ArrayList<Announcement>();
         this.file = new File(main.getDataFolder(), "config.yml");
         this.interval = 5;
-        this.noPlayers = true;
         this.minPlayers = 5;
         this.pluginName = "[" + main.getName() + "] ";
     }
@@ -53,7 +51,6 @@ public class Config {
         announcements.clear();
         announcements.addAll(getAnnouncements(config.getConfigurationSection("Announcements")));
         interval = config.getInt("Interval.Minutes", 5) * 60 + config.getInt("Interval.Seconds", 0);
-        noPlayers = config.getBoolean("No Players");
         minPlayers = config.getInt("Min Players");
         color = Announcement.colorize(config.getString("Default Message Color", "&7"));
 
@@ -72,7 +69,6 @@ public class Config {
             NXAnnouncer.getLOG().log(Level.INFO, "{0}Generating config.yml", pluginName);
             config.set("Interval.Minutes", 5);
             config.set("Interval.Seconds", 0);
-            config.set("No Players", true);
             config.set("Min Players", 5);
             config.set("Default Message Color", "&7");
             config.set("Announcements.AnnouncementGroup1.header", "&1-----------[BarksSimple&bAnnouncer]-----------");
@@ -100,10 +96,6 @@ public class Config {
 
     public List<Announcement> getAnnouncements() {
         return announcements;
-    }
-
-    public boolean isNoPlayers() {
-        return noPlayers;
     }
 
     public int getMinPlayers() {

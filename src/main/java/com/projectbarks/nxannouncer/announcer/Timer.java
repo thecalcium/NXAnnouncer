@@ -22,7 +22,7 @@ public class Timer extends BukkitRunnable implements Runnable {
     @Override
     public void run() {
         if (config.getAnnouncements().size() > 0) {
-            if (main.getServer().getOnlinePlayers().size() < config.getMinPlayers() && config.isNoPlayers()) {
+            if (main.getServer().getOnlinePlayers().size() < config.getMinPlayers()) {
                 NXAnnouncer.getLOG().log(Level.INFO, "Not enough players broadcast canceled");
                 return;
             }
