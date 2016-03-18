@@ -1,4 +1,4 @@
 NXAnnouncer
 ===========
 
-The most ascetically pleasing announcer out there!
+The most aesthetically pleasing announcer out there!
