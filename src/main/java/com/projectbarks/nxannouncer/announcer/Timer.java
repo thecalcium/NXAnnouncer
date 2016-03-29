@@ -2,8 +2,8 @@ package com.projectbarks.nxannouncer.announcer;
 
 import com.projectbarks.nxannouncer.NXAnnouncer;
 import com.projectbarks.nxannouncer.config.Config;
-import java.util.logging.Level;
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -45,6 +45,9 @@ public class Timer extends BukkitRunnable implements Runnable {
     private void broadcast(String message) {
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.sendMessage(message);
+            if (!(config.getPingSound().equalsIgnoreCase("none"))) {
+                player.playSound(player.getLocation(), Sound.valueOf(config.getPingSound()), (float) config.getPingVolume(), (float) config.getPingPitch());
+            }
         }
     }
 

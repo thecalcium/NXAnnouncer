@@ -23,6 +23,9 @@ public class Config {
 
     private double interval;
     private int minPlayers;
+    private String pingSound;
+    private double pingVolume;
+    private double pingPitch;
     private String pluginName;
     private List<Announcement> announcements;
     private FileConfiguration config;
@@ -35,6 +38,9 @@ public class Config {
         this.file = new File(main.getDataFolder(), "config.yml");
         this.interval = 5;
         this.minPlayers = 5;
+        this.pingSound = "ENTITY_CHICKEN_EGG";
+        this.pingVolume = 1.0;
+        this.pingPitch = 1.0;
         this.pluginName = "[" + main.getName() + "] ";
     }
 
@@ -52,6 +58,9 @@ public class Config {
         announcements.addAll(getAnnouncements(config.getConfigurationSection("Announcements")));
         interval = config.getInt("Interval.Minutes", 5) * 60 + config.getInt("Interval.Seconds", 0);
         minPlayers = config.getInt("Min Players");
+        pingSound = config.getString("Ping Sound");
+        pingVolume = config.getDouble("Ping Volume");
+        pingPitch = config.getDouble("Ping Pitch");
         color = Announcement.colorize(config.getString("Default Message Color", "&7"));
 
         NXAnnouncer.getLOG().log(Level.INFO, "{0}Has loaded {1} message(s).", new Object[]{pluginName, announcements.size()});
@@ -70,6 +79,9 @@ public class Config {
             config.set("Interval.Minutes", 5);
             config.set("Interval.Seconds", 0);
             config.set("Min Players", 5);
+            config.set("Ping Sound", "ENTITY_CHICKEN_EGG");
+            config.set("Ping Volume", 1.0);
+            config.set("Ping Pitch", 1.0);
             config.set("Default Message Color", "&7");
             config.set("Announcements.AnnouncementGroup1.header", "&1-----------[BarksSimple&bAnnouncer]-----------");
             config.set("Announcements.AnnouncementGroup1.footer", "&1----------------------&b----------------------");
@@ -100,6 +112,18 @@ public class Config {
 
     public int getMinPlayers() {
         return minPlayers;
+    }
+
+    public String getPingSound() {
+        return pingSound;
+    }
+
+    public double getPingVolume() {
+        return pingVolume;
+    }
+
+    public double getPingPitch() {
+        return pingPitch;
     }
 
     public double getInterval() {
