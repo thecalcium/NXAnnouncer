@@ -79,7 +79,7 @@ public class Config {
             config.set("Interval.Minutes", 5);
             config.set("Interval.Seconds", 0);
             config.set("Min Players", 5);
-            config.set("Ping Sound", "ENTITY_CHICKEN_EGG");
+            config.set("Ping Sound", "none");
             config.set("Ping Volume", 1.0);
             config.set("Ping Pitch", 1.0);
             config.set("Default Message Color", "&7");
