@@ -38,7 +38,7 @@ public class Config {
         this.file = new File(main.getDataFolder(), "config.yml");
         this.interval = 5;
         this.minPlayers = 5;
-        this.pingSound = "ENTITY_CHICKEN_EGG";
+        this.pingSound = "none";
         this.pingVolume = 1.0;
         this.pingPitch = 1.0;
         this.pluginName = "[" + main.getName() + "] ";
